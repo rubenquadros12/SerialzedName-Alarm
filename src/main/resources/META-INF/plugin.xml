@@ -1,0 +1,36 @@
+<idea-plugin>
+    <id>com.ruben.serialized-alarm</id>
+    <name>SerializedName Alarm</name>
+    <vendor email="rquadros95@gmail.com" url="http://www.yourcompany.com">NoCompany</vendor>
+
+    <description><![CDATA[
+    Enter short description for your plugin here.<br>
+    <em>most HTML tags may be used</em>
+    ]]></description>
+
+    <!-- please see https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html
+         on how to target different products -->
+    <depends>com.intellij.modules.platform</depends>
+    <depends>org.jetbrains.kotlin</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <postStartupActivity implementation="com.ruben.update.UpdateChecker"/>
+
+        <notificationGroup displayType="STICKY_BALLOON" id="Update Notification Group"/>
+
+        <localInspection
+                language="kotlin"
+                groupPath="Kotlin"
+                groupBundle="messages.InspectionsBundle"
+                groupKey="group.names.probable.bugs"
+                enabledByDefault="true"
+                implementationClass="com.ruben.inspection.DataClassInspector"
+                displayName="Add 'SerializedName' annotation"
+                shortName="DataClassInspector"/>
+
+    </extensions>
+
+    <actions>
+        <!-- Add your actions here -->
+    </actions>
+</idea-plugin>
